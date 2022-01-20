@@ -20,41 +20,42 @@ public class Reservation {
             generator = "reservation_sequence"
     )
 
-    private long reservationID;
+    private long reservationId;
     private float amount;
     private LocalDateTime pickupDate;
     private LocalDateTime returnDate;
-    private long carID;
-    private long customerID;
+    private long carId;
+    private long customerId;
     @Transient
     private float totalAmount;
 
-    public Reservation() {
+    public Reservation(){
     }
 
-    public Reservation(long reservationID, float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carID, long customerID) {
-        this.reservationID = reservationID;
+    public Reservation(long reservationId, float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId, float totalAmount) {
+        this.reservationId = reservationId;
         this.amount = amount;
         this.pickupDate = pickupDate;
         this.returnDate = returnDate;
-        this.carID = carID;
-        this.customerID = customerID;
+        this.carId = carId;
+        this.customerId = customerId;
+        this.totalAmount = totalAmount;
     }
 
-    public Reservation(float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carID, long customerID) {
-        this.amount = amount;
-        this.pickupDate = pickupDate;
-        this.returnDate = returnDate;
-        this.carID = carID;
-        this.customerID = customerID;
-    }
+    //    public Reservation(float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId) {
+//        this.amount = amount;
+//        this.pickupDate = pickupDate;
+//        this.returnDate = returnDate;
+//        this.carId = carId;
+//        this.customerId = customerId;
+//    }
 
     public long getReservationID() {
-        return reservationID;
+        return reservationId;
     }
 
-    public void setReservationID(long reservationID) {
-        this.reservationID = reservationID;
+    public void setReservationID(long reservationId) {
+        this.reservationId = reservationId;
     }
 
     public float getAmount() {
@@ -81,20 +82,20 @@ public class Reservation {
         this.returnDate = returnDate;
     }
 
-    public long getCarID() {
-        return carID;
+    public long getCarId() {
+        return carId;
     }
 
-    public void setCarID(long carID) {
-        this.carID = carID;
+    public void setCarId(long carId) {
+        this.carId = carId;
     }
 
-    public long getCustomerID() {
-        return customerID;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerID(long customerID) {
-        this.customerID = customerID;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public float getTotalAmount(){
@@ -107,12 +108,12 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-                "reservationID=" + reservationID +
+                "reservationID=" + reservationId +
                 ", amount=" + amount +
                 ", pickupDate=" + pickupDate +
                 ", returnDate=" + returnDate +
-                ", carID=" + carID +
-                ", customerID=" + customerID +
+                ", carID=" + carId +
+                ", customerID=" + customerId +
                 ", totalAmount=" + totalAmount +
                 '}';
     }

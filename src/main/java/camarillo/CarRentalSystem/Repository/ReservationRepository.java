@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation,Long> {
 
-    @Query("SELECT r FROM Reservation r WHERE r.carID = ?1")
-    Optional<Reservation> findReservationByCar(long carID);
+    @Query("SELECT r FROM Reservation r WHERE r.carId = ?1")
+    Optional<Reservation> findReservationByCar(long carId);
 }

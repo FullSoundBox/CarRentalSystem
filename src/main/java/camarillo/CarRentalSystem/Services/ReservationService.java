@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +30,7 @@ public class ReservationService {
 
     public void addNewReservation(Reservation reservation) {
         Optional<Reservation> reservationByCar =
-                reservationRepository.findReservationByCar(reservation.getCarID());
+                reservationRepository.findReservationByCar(reservation.getCarId());
 
         if (reservationByCar.isPresent()) {
             throw new IllegalArgumentException("Car already in use");
@@ -39,23 +38,23 @@ public class ReservationService {
         reservationRepository.save(reservation);
     }
 
-    public void deleteReservation(Long reservationID) {
-        boolean exists = reservationRepository.existsById(reservationID);
+    public void deleteReservation(Long reservationId) {
+        boolean exists = reservationRepository.existsById(reservationId);
         if (!exists)
-            throw new IllegalStateException("Rservation with ID " + reservationID + " does not exists");
+            throw new IllegalStateException("Reservation with Id " + reservationId + " does not exists");
         else
-            reservationRepository.deleteById(reservationID);
+            reservationRepository.deleteById(reservationId);
     }
 
     @Transactional
-    public void updateReservation(Long reservationID, LocalDateTime pickupDate, LocalDateTime returnDate, Long carID) {
+    public void updateReservation(Long reservationId, LocalDateTime pickupDate, LocalDateTime returnDate, Long carId) {
         Reservation reservation = reservationRepository
-                .findById(reservationID).
-                orElseThrow(() -> new IllegalStateException("Reservation with ID" + reservationID + " does not exists"));
+                .findById(reservationId).
+                orElseThrow(() -> new IllegalStateException("Reservation with ID" + reservationId + " does not exists"));
         if (pickupDate.isBefore(returnDate)){
             reservation.setPickupDate(pickupDate);
             reservation.setReturnDate(returnDate);
         }
-        reservation.setCarID(carID);
+        reservation.setCarId(carId);
     }
 }

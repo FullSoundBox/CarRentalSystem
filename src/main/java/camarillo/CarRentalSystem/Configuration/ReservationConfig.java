@@ -22,7 +22,8 @@ public class ReservationConfig {
                     LocalDateTime.of(2021, 1, 1, 0, 0),
                     LocalDateTime.now(),
                     1L,
-                    1L);
+                    1L,
+                    0);
 
             Reservation reservation2 = new Reservation(
                     2L,
@@ -30,7 +31,8 @@ public class ReservationConfig {
                     LocalDateTime.of(2021, 1, 7, 0, 0),
                     LocalDateTime.now(),
                     2L,
-                    3L);
+                    3L,
+                    0);
 
             List<Reservation> reservationList = new ArrayList<>();
             reservationList.add(reservation1);
