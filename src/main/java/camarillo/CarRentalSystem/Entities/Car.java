@@ -22,9 +22,13 @@ public class Car {
     String model;
     String carClass;
     String pricePerDay;
-    int available;
+    boolean available;
+    String imgURL;
 
-    public Car(long carId, String color, String brand, String model, String carClass, String pricePerDay, int available) {
+    public Car(){}
+
+    public Car(long carId, String color, String brand, String model, String carClass,
+               String pricePerDay, boolean available, String imgURL) {
         this.carId = carId;
         this.color = color;
         this.brand = brand;
@@ -32,6 +36,7 @@ public class Car {
         this.carClass = carClass;
         this.pricePerDay = pricePerDay;
         this.available = available;
+        this.imgURL = imgURL;
     }
 
     public long getCarId() {
@@ -82,13 +87,19 @@ public class Car {
         this.pricePerDay = pricePerDay;
     }
 
-    public int getAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(int available) {
+    public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    public boolean isAvailable() { return available; }
+
+    public String getImgURL() { return imgURL; }
+
+    public void setImgURL(String imgURL) { this.imgURL = imgURL; }
 
     @Override
     public String toString() {
@@ -100,6 +111,7 @@ public class Car {
                 ", carClass='" + carClass + '\'' +
                 ", pricePerDay='" + pricePerDay + '\'' +
                 ", available=" + available +
+                ", imgURL='" + imgURL + '\'' +
                 '}';
     }
 }

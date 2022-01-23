@@ -24,6 +24,7 @@ public class Reservation {
     private float amount;
     private LocalDateTime pickupDate;
     private LocalDateTime returnDate;
+    private String reservationStatus;
     private long carId;
     private long customerId;
     @Transient
@@ -32,13 +33,14 @@ public class Reservation {
     public Reservation(){
     }
 
-    public Reservation(long reservationId, float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId, float totalAmount) {
+    public Reservation(long reservationId, float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId, String reservationStatus, float totalAmount) {
         this.reservationId = reservationId;
         this.amount = amount;
         this.pickupDate = pickupDate;
         this.returnDate = returnDate;
         this.carId = carId;
         this.customerId = customerId;
+        this.reservationStatus = reservationStatus;
         this.totalAmount = totalAmount;
     }
 

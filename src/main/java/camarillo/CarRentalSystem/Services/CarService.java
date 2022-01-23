@@ -3,6 +3,7 @@ package camarillo.CarRentalSystem.Services;
 import camarillo.CarRentalSystem.Entities.Car;
 import camarillo.CarRentalSystem.Repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,6 +21,13 @@ public class CarService {
 
     public List<Car> getAllCars(){
         return carRepository.findAll();
+    }
+
+    public List<Car> getEconomy(boolean order) {
+        if(order)
+            return carRepository.filterByClass(Sort.by(Sort.Direction.ASC, "pricePerDay"));
+        else
+            return carRepository.filterByClass(Sort.by(Sort.Direction.DESC, "pricePerDay"));
     }
 
     public void addNewCar(Car car){

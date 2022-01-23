@@ -23,6 +23,7 @@ public class ReservationConfig {
                     LocalDateTime.now(),
                     1L,
                     1L,
+                    "active",
                     0);
 
             Reservation reservation2 = new Reservation(
@@ -32,6 +33,7 @@ public class ReservationConfig {
                     LocalDateTime.now(),
                     2L,
                     3L,
+                    "returned",
                     0);
 
             List<Reservation> reservationList = new ArrayList<>();

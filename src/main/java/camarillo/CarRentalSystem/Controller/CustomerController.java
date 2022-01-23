@@ -17,20 +17,20 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<Customer> getAllCustomer() {return customerService.getAllCustomers();}
 
-    @PostMapping
+    @PostMapping(path = "/add/{carId}")
     public void addNewCustomer(@RequestBody Customer customer){
         customerService.addNewCustomer(customer);
     }
 
-    @DeleteMapping(path = "{customerId}")
+    @DeleteMapping(path = "/delete/{customerId}")
     public void deleteCustomer(@PathVariable("customerId") Long customerId){
         customerService.deleteCustomer(customerId);
     }
 
-    @PostMapping(path = "{customerId}")
+    @PostMapping(path = "/update/{customerId}")
     public void updateCustomer(@PathVariable("customerId")Long customerId,
                                @RequestParam(required = false) String name,
                                @RequestParam(required = false) String mobile,

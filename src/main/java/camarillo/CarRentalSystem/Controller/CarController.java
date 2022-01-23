@@ -17,20 +17,26 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<Car> getAllCars() { return carService.getAllCars(); }
 
-    @PostMapping
+    @GetMapping(path = "/economy/asc")
+    public List<Car> economyAsc() {return carService.getEconomy(true);}
+
+    @GetMapping(path = "/economy/desc")
+    public List<Car> economyDesc() {return carService.getEconomy(false);}
+
+    @PostMapping(path = "/add")
     public void addNewCar(@RequestBody Car car){
         carService.addNewCar(car);
     }
 
-    @DeleteMapping(path = "{carId}")
+    @DeleteMapping(path = "/delete/{carId}")
     public void deleteCarById(@PathVariable("carId") Long carId){
         carService.deleteCar(carId);
     }
 
-    @PutMapping(path = "{carId}")
+    @PutMapping(path = "/update/{carId}")
     public void updateCar(@PathVariable("carId")Long carId,
                           @RequestParam(required = false) String color,
                           @RequestParam(required = false) String brand,

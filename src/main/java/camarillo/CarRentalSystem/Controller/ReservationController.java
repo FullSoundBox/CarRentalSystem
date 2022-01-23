@@ -19,12 +19,12 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<Reservation> getReservations(){
         return reservationService.getReservations();
     }
 
-    @PostMapping
+    @PostMapping(path = "/add/{reservationID}")
     public void createNewReservation(@RequestBody Reservation reservation){
         reservationService.addNewReservation(reservation);
     }

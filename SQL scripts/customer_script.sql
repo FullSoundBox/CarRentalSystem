@@ -1,4 +1,4 @@
-INSERT INTO `carrentaldb`.`customer` (`customerId`, `customerName`, `mobile`, `email`)
+INSERT INTO `carrentaldb`.`customer` (`customer_id`, `name`, `mobile`, `email`)
 VALUES 
 ('1', 'Jose Sanchez', '5512345678', 'jose.sanchez@gmail.com'),
 ('2', 'Ana Ramirez', '5598765432', 'ana.ramirez@gmail.com'),
