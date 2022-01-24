@@ -20,11 +20,11 @@ public class CarController {
     @GetMapping(path = "/all")
     public List<Car> getAllCars() { return carService.getAllCars(); }
 
-    @GetMapping(path = "/economy/asc")
-    public List<Car> economyAsc() {return carService.getEconomy(true);}
+    @GetMapping(path = "/economy/asc/{sortClass}")
+    public List<Car> economyAsc(@PathVariable("sortClass") boolean sortClass) {return carService.getEconomy(true,sortClass);}
 
-    @GetMapping(path = "/economy/desc")
-    public List<Car> economyDesc() {return carService.getEconomy(false);}
+    @GetMapping(path = "/economy/desc/{sortClass}")
+    public List<Car> economyDesc(@PathVariable("sortClass") boolean sortClass) {return carService.getEconomy(false,sortClass);}
 
     @PostMapping(path = "/add")
     public void addNewCar(@RequestBody Car car){

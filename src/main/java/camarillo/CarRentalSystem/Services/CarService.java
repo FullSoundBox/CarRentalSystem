@@ -23,11 +23,19 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public List<Car> getEconomy(boolean order) {
-        if(order)
-            return carRepository.filterByClass(Sort.by(Sort.Direction.ASC, "pricePerDay"));
-        else
-            return carRepository.filterByClass(Sort.by(Sort.Direction.DESC, "pricePerDay"));
+    public List<Car> getEconomy(boolean order, boolean sortClass) {
+        if (sortClass){
+            return carRepository.filterByPriceAndClass(
+                    Sort.by(Sort.Direction.ASC, "pricePerDay"), "carClass");
+        }
+        if(order){
+            return carRepository.sortByPrice(
+                    Sort.by(Sort.Direction.ASC, "pricePerDay"));
+        }
+        else {
+            return carRepository.sortByPrice(
+                    Sort.by(Sort.Direction.DESC, "pricePerDay"));
+        }
     }
 
     public void addNewCar(Car car){
