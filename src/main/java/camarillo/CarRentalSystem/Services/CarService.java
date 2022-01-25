@@ -38,6 +38,24 @@ public class CarService {
         }
     }
 
+//    public List<Car> getAllAvailableCars(){
+//        return carRepository.getAllAvailableCars("2000-01-01");}
+
+    public List<Car> getAllAvailableCars(String pickupDate, String returnDate, String carClass){
+//        System.out.println(pickupDate);
+//        System.out.println(returnDate);
+//        System.out.println(carClass);
+        if (carClass==null)
+            return carRepository.getAllAvailableCars(pickupDate);
+        return carRepository.getAvailableCars(pickupDate,carClass);}
+
+    public List<Car> getAllAvailableCarsByPrice(String pickupDate, String returnDate, String carClass){
+//        System.out.println(pickupDate);
+//        System.out.println(returnDate);
+//        System.out.println(carClass);
+
+        return carRepository.getAvailableCarsByPrice(pickupDate,carClass);}
+
     public void addNewCar(Car car){
         boolean exists = carRepository.existsById(car.getCarId());
         if (exists)

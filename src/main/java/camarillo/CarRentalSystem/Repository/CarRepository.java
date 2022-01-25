@@ -26,4 +26,15 @@ public interface CarRepository extends JpaRepository<Car,Long> {
             Sort sort,
             @Param("carClass") String carClass);
 
+    @Query(value = "select distinct * from car having (not exists (select * from reservation as r having r.car_id=car.car_id and ((r.reservation_status='Active' and (r.pickup_date<=:pickupDate and r.return_date>=:pickupDate)) or r.reservation_status='Missing')))", nativeQuery = true)
+    List<Car> getAllAvailableCars(@Param("pickupDate") String pickupDate);
+
+    @Query(value = "select distinct * from car having (not exists (select * from reservation as r having r.car_id=car.car_id and ((r.reservation_status='Active' and (r.pickup_date<=:pickupDate and r.return_date>=:pickupDate)) or r.reservation_status='Missing'))) and car.car_class=:carClass", nativeQuery = true)
+    List<Car> getAvailableCars(@Param("pickupDate") String pickupDate,
+                               @Param("carClass") String carClass);
+
+    @Query(value = "select distinct * from car having (not exists (select * from reservation as r having r.car_id=car.car_id and ((r.reservation_status='Active' and (r.pickup_date<=:pickupDate and r.return_date>=:pickupDate)) or r.reservation_status='Missing'))) and car.car_class=:carClass order by car.price_per_day", nativeQuery = true)
+    List<Car> getAvailableCarsByPrice(@Param("pickupDate") String pickupDate,
+                               @Param("carClass") String carClass);
+
 }
