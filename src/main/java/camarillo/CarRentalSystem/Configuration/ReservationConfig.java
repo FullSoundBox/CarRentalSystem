@@ -19,26 +19,14 @@ public class ReservationConfig {
             Reservation reservation1 = new Reservation(
                     1L,
                     1000F,
-                    LocalDateTime.of(2021, 1, 1, 0, 0),
-                    LocalDateTime.now(),
-                    1L,
-                    1L,
+                    "2022-01-01",
+                    "2022-01-10",
                     "active",
-                    0);
-
-            Reservation reservation2 = new Reservation(
-                    2L,
-                    2000F,
-                    LocalDateTime.of(2021, 1, 7, 0, 0),
-                    LocalDateTime.now(),
-                    2L,
-                    3L,
-                    "returned",
-                    0);
+                    1L,
+                    1L);
 
             List<Reservation> reservationList = new ArrayList<>();
             reservationList.add(reservation1);
-            reservationList.add(reservation2);
             repository.saveAll(reservationList);
         };
     }

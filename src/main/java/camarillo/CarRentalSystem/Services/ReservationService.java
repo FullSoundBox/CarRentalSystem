@@ -29,12 +29,13 @@ public class ReservationService {
     }
 
     public void addNewReservation(Reservation reservation) {
-        Optional<Reservation> reservationByCar =
-                reservationRepository.findReservationByCar(reservation.getCarId());
-
-        if (reservationByCar.isPresent()) {
-            throw new IllegalArgumentException("Car already in use");
-        }
+//        Optional<Reservation> reservationByCar =
+//                reservationRepository.findReservationByCar(reservation.getCarId());
+//
+//        if (reservationByCar.isPresent()) {
+//            throw new IllegalArgumentException("Car already in use");
+//        }
+//        System.out.println(reservation);
         reservationRepository.save(reservation);
     }
 
@@ -47,14 +48,12 @@ public class ReservationService {
     }
 
     @Transactional
-    public void updateReservation(Long reservationId, LocalDateTime pickupDate, LocalDateTime returnDate, Long carId) {
+    public void updateReservation(Long reservationId, String pickupDate, String returnDate, Long carId) {
         Reservation reservation = reservationRepository
                 .findById(reservationId).
                 orElseThrow(() -> new IllegalStateException("Reservation with ID" + reservationId + " does not exists"));
-        if (pickupDate.isBefore(returnDate)){
             reservation.setPickupDate(pickupDate);
             reservation.setReturnDate(returnDate);
-        }
         reservation.setCarId(carId);
     }
 

@@ -29,7 +29,7 @@ public class ReservationController {
         return reservationService.getReservationById(id);
     }
 
-    @PostMapping(path = "/add/{reservationID}")
+    @PostMapping(path = "/add")
     public void createNewReservation(@RequestBody Reservation reservation){
         reservationService.addNewReservation(reservation);
     }
@@ -42,8 +42,8 @@ public class ReservationController {
     @PutMapping(path = "{reservationID}")
     public void updateReservation(
             @PathVariable("reservationID") Long reservationID,
-            @RequestParam(required = false) LocalDateTime pickupDate,
-            @RequestParam(required = false) LocalDateTime returnDate,
+            @RequestParam(required = false) String pickupDate,
+            @RequestParam(required = false) String returnDate,
             @RequestParam(required = false) Long carID)
     {
         reservationService.updateReservation(reservationID,pickupDate,returnDate,carID);

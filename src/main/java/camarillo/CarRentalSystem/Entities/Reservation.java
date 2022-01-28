@@ -24,28 +24,25 @@ public class Reservation {
 
     private long reservationId;
     private float amount;
-    private LocalDateTime pickupDate;
-    private LocalDateTime returnDate;
-//    private String pickupDate;
-//    private String returnDate;
+//    private LocalDateTime pickupDate;
+//    private LocalDateTime returnDate;
+    private String pickupDate;
+    private String returnDate;
     private String reservationStatus;
     private long carId;
     private long customerId;
-    @Transient
-    private float totalAmount;
 
     public Reservation(){
     }
 
-    public Reservation(long reservationId, float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId, String reservationStatus, float totalAmount) {
+    public Reservation(long reservationId, float amount, String pickupDate, String returnDate, String reservationStatus, long carId, long customerId) {
         this.reservationId = reservationId;
         this.amount = amount;
         this.pickupDate = pickupDate;
         this.returnDate = returnDate;
+        this.reservationStatus = reservationStatus;
         this.carId = carId;
         this.customerId = customerId;
-        this.reservationStatus = reservationStatus;
-        this.totalAmount = totalAmount;
     }
 
     //    public Reservation(float amount, LocalDateTime pickupDate, LocalDateTime returnDate, long carId, long customerId) {
@@ -63,19 +60,19 @@ public class Reservation {
         this.amount = amount;
     }
 
-    public LocalDateTime getPickupDate() {
+    public String getPickupDate() {
         return pickupDate;
     }
 
-    public void setPickupDate(LocalDateTime pickupDate) {
+    public void setPickupDate(String pickupDate) {
         this.pickupDate = pickupDate;
     }
 
-    public LocalDateTime getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDateTime returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -111,17 +108,6 @@ public class Reservation {
         this.reservationStatus = reservationStatus;
     }
 
-    public void setTotalAmount(float totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public float getTotalAmount(){
-        //Use this to calculate the total
-        LocalDateTime tempDateTime = LocalDateTime.from(this.pickupDate);
-        long days = tempDateTime.until(this.returnDate, ChronoUnit.DAYS);
-        return days*this.amount;
-    }
-
     @Override
     public String toString() {
         return "Reservation{" +
@@ -131,7 +117,6 @@ public class Reservation {
                 ", returnDate=" + returnDate +
                 ", carID=" + carId +
                 ", customerID=" + customerId +
-                ", totalAmount=" + totalAmount +
                 '}';
     }
 }
