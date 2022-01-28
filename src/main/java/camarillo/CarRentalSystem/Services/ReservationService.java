@@ -57,4 +57,8 @@ public class ReservationService {
         }
         reservation.setCarId(carId);
     }
+
+    public Reservation getReservationById(Long id) {
+        return reservationRepository.getById(id);
+    }
 }

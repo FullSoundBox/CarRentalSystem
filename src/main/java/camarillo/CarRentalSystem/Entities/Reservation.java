@@ -1,5 +1,7 @@
 package camarillo.CarRentalSystem.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,6 +26,8 @@ public class Reservation {
     private float amount;
     private LocalDateTime pickupDate;
     private LocalDateTime returnDate;
+//    private String pickupDate;
+//    private String returnDate;
     private String reservationStatus;
     private long carId;
     private long customerId;
@@ -51,15 +55,6 @@ public class Reservation {
 //        this.carId = carId;
 //        this.customerId = customerId;
 //    }
-
-    public long getReservationID() {
-        return reservationId;
-    }
-
-    public void setReservationID(long reservationId) {
-        this.reservationId = reservationId;
-    }
-
     public float getAmount() {
         return amount;
     }
@@ -98,6 +93,26 @@ public class Reservation {
 
     public void setCustomerId(long customerId) {
         this.customerId = customerId;
+    }
+
+    public long getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(long reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public String getReservationStatus() {
+        return reservationStatus;
+    }
+
+    public void setReservationStatus(String reservationStatus) {
+        this.reservationStatus = reservationStatus;
+    }
+
+    public void setTotalAmount(float totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public float getTotalAmount(){

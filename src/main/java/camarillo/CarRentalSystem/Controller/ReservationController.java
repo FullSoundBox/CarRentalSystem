@@ -24,6 +24,11 @@ public class ReservationController {
         return reservationService.getReservations();
     }
 
+    @GetMapping(path = "{reservationID}")
+    public Reservation getReservations(@PathVariable("reservationID") Long id){
+        return reservationService.getReservationById(id);
+    }
+
     @PostMapping(path = "/add/{reservationID}")
     public void createNewReservation(@RequestBody Reservation reservation){
         reservationService.addNewReservation(reservation);
